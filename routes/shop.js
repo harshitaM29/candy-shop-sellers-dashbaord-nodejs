@@ -9,4 +9,6 @@ router.get('/shop',shopController.getShopData);
 router.post('/shop',shopController.postShopData);
 
 router.put('/edit-shop/:id',shopController.editShopData);
+
+router.delete('/delete/:id',shopController.deleteShopData);
 module.exports = router;

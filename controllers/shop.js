@@ -34,4 +34,12 @@ exports.editShopData = async(req,res,next) => {
     res.status(201).json(shopData);
 };
 
+exports.deleteShopData = async(req,res,next) => {
+    const id = req.params.id;
+    const shopData = await Shop.findByPk(id);
+    await shopData.destroy();
+
+};
+
+
 
