@@ -19,3 +19,19 @@ exports.postShopData = async(req,res,next) => {
     res.status(201).json(shopData);
 };
 
+exports.editShopData = async(req,res,next) => {
+    const id = req.params.id;
+    const updatedQuantity = req.body.quantity;
+    const shopData = await Shop.findByPk(id);
+    if(shopData) {
+        shopData.quantity = updatedQuantity;
+
+        await shopData.save();
+    }
+    if(shopData.quantity === 0) {
+        await shopData.destroy()
+    }
+    res.status(201).json(shopData);
+};
+
+
